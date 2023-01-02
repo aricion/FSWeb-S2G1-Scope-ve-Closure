@@ -29,10 +29,13 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
-  1. skor1 ve skor2 arasındaki fark nedir?
+  1. skor1 ve skor2 arasındaki fark nedir?i
+    // 1'de fonksiyon çalıştırıldığında skor sıfırlanıyor daha sonra arttırılıyor.
+    // 2'de sıfırlanmadan en sonki değer dönüyor ?! 
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
-  
+    // 2'de closure var.
+
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
 */
 
@@ -44,6 +47,8 @@ function skorArtirici() {
   }
 }
 
+// 
+
 const skor1 = skorArtirici();
 
 // skor2 kodları
@@ -53,6 +58,7 @@ function skor2() {
   return skor++;
 }
 
+// 
 
 /* Görev 2: takimSkoru() 
 Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
@@ -64,11 +70,11 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(){
+  const random = Math.floor(Math.random()* 16) + 10;
+  return random
 }
-
-
+console.log(takimSkoru());
 
 
 /* Görev 3: macSonucu() 
@@ -86,9 +92,22 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+
+function macSonucu(takimSkoru,ceyrek,){   
+  let Ev = 0; // Ev sahibinin skoru
+  let Konuk = 0; // Konuk takımın skoru
+  for (let i=0; i<=ceyrek; i++) {
+      Ev = Ev + takimSkoru();
+      Konuk = Konuk +takimSkoru();
+  }
+  let sonuc = {
+      EvSahibi : Ev,
+      KonukTakim : Konuk,
+  }
+  return sonuc;
 }
+
+console.log(macSonucu(takimSkoru, 4));
 
 
 
@@ -109,10 +128,18 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
-
+function periyotSkoru(takimSkoru) {
+  let Ev1 = 0;
+  let Konuk1 =0;
+  Ev1 = Ev1 + takimSkoru();
+  Konuk1 = Konuk1 +takimSkoru();  
+  let donecekObje ={
+      EvSahibi : Ev1,
+      KonukTakim :Konuk1
+  }
+  return donecekObje;    
 }
+console.log(periyotSkoru(takimSkoru));
 
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
